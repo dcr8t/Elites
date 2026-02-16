@@ -4,40 +4,88 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="https://vitejs.dev/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gemini React Starter</title>
+    <title>Vite + React + Gemini</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
             },
             colors: {
-              primary: '#646cff',
-              'primary-hover': '#535bf2',
-              surface: '#ffffff',
-              background: '#f8fafc',
+              vite: '#646cff',
+              react: '#61dafb',
+              gemini: '#4d8cf4',
+            },
+            animation: {
+              'logo-spin': 'logo-spin infinite 20s linear',
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              'logo-spin': {
+                from: { transform: 'rotate(0deg)' },
+                to: { transform: 'rotate(360deg)' },
+              }
             }
           }
         }
       }
     </script>
     <style>
+      :root {
+        color-scheme: light dark;
+      }
       body {
         margin: 0;
-        font-family: 'Inter', sans-serif;
-        background-color: #f8fafc;
-        color: #1e293b;
+        display: flex;
+        place-items: center;
+        min-width: 320px;
+        min-height: 100vh;
+        background-color: #242424;
+        color: rgba(255, 255, 255, 0.87);
+      }
+      #root {
+        width: 100%;
+        margin: 0 auto;
+        padding: 2rem;
+        text-align: center;
+      }
+      @media (prefers-color-scheme: light) {
+        body {
+          background-color: #ffffff;
+          color: #213547;
+        }
+      }
+      .logo {
+        height: 6em;
+        padding: 1.5em;
+        will-change: filter;
+        transition: filter 300ms;
+      }
+      .logo:hover {
+        filter: drop-shadow(0 0 2em #646cffaa);
+      }
+      .logo.react:hover {
+        filter: drop-shadow(0 0 2em #61dafbaa);
+      }
+      .logo.gemini:hover {
+        filter: drop-shadow(0 0 2em #4d8cf4aa);
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .logo.react {
+          animation: logo-spin infinite 20s linear;
+        }
       }
     </style>
   <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
     "react": "https://esm.sh/react@^19.2.4",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
     "@google/genai": "https://esm.sh/@google/genai@^1.41.0"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "Gemini React Starter",
-  "description": "A modern, production-ready React application boilerplate featuring TypeScript, Tailwind CSS, and Google Gemini API integration.",
+  "name": "Vite React Gemini Starter",
+  "description": "The ultimate Vite + React scaffold with integrated Google Gemini AI capabilities.",
   "requestFramePermissions": []
 }

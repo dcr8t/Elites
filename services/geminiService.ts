@@ -1,35 +1,34 @@
 import { GoogleGenAI } from "@google/genai";
 import { GEMINI_MODEL, SYSTEM_INSTRUCTION } from "../constants";
 
-// Initialize the client with the environment variable
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 /**
- * Generates content based on a user prompt using the configured Gemini model.
- * 
- * @param prompt The user's input text
- * @returns The generated text response
+ * Generates content using the Gemini API.
+ * Uses the latest SDK patterns as per guidelines.
  */
 export const generateResponse = async (prompt: string): Promise<string> => {
+  // Always create a new instance or ensure the key is fresh from process.env.API_KEY
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
   try {
     const response = await ai.models.generateContent({
       model: GEMINI_MODEL,
       contents: prompt,
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
+        temperature: 0.7,
       }
     });
 
-    // Extract text directly from the response object
     const text = response.text;
     
-    if (!text) {
-      throw new Error("No response text generated.");
+    if (text === undefined) {
+      throw new Error("The model returned an empty response.");
     }
 
     return text;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Gemini API Error:", error);
-    throw error;
+    // Handle specific error messages if needed, e.g., for "Requested entity was not found."
+    throw new Error(error.message || "An unexpected error occurred with the AI service.");
   }
 };
