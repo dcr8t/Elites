@@ -1,0 +1,5 @@
+{
+  "name": "Gemini React Starter",
+  "description": "A modern, production-ready React application boilerplate featuring TypeScript, Tailwind CSS, and Google Gemini API integration.",
+  "requestFramePermissions": []
+}
